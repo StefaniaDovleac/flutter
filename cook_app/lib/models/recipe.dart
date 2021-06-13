@@ -25,7 +25,6 @@ class Recipe {
 
   @override
   String toString() {
-    // TODO: implement toString
     return 'Recipe {name: $name, image: $image, rating: $rating, totalTime: $totalTime}';
   }
 }
