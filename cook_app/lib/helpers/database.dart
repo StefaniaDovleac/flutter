@@ -30,7 +30,7 @@ class DatabaseHandler {
     return result;
   }
 
-  Future<List<ShoppingListItem>> retrieveUsers() async {
+  Future<List<ShoppingListItem>> retrieveItems() async {
     final Database db = await initializeDB();
     final List<Map<String, Object>> queryResult =
         await db.query('shoppingListItems');

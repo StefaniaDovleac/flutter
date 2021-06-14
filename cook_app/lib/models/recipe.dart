@@ -28,3 +28,12 @@ class Recipe {
     return 'Recipe {name: $name, image: $image, rating: $rating, totalTime: $totalTime}';
   }
 }
+
+class Ingredient{
+  String name; 
+  int quantity;
+
+  Ingredient({
+    this.name, this.quantity
+  });
+}
