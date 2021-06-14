@@ -16,7 +16,7 @@ class RecipeAAPI {
     headers: {
       	"x-rapidapi-key": "a78d3a071emsh867e7a80731a99fp1c4bb8jsnf6bb63123a37",
 	      "x-rapidapi-host": "yummly2.p.rapidapi.com",
-	      "useQueryString": "true"R
+	      "useQueryString": "true"
     }
     );
 

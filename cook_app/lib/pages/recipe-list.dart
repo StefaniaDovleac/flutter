@@ -1,5 +1,6 @@
 import 'package:cook_app/models/recipe.api.dart';
 import 'package:cook_app/models/recipe.dart';
+import 'package:cook_app/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cook_app/widgets/recipe_card.dart';
@@ -41,17 +42,23 @@ class _RecipeListState extends State<RecipeList> {
             ],
           ),
         ),
+        drawer: MyDrawer(),
         body:_isLoading
             ? Center(child: CircularProgressIndicator())
-            : ListView.builder(
-                itemCount: _recipeList.length,
-                itemBuilder: (context, index) {
-                  return RecipeCard(
+            : GridView.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                
+                 itemBuilder:  (context, index) {        
+               
+                 return RecipeCard(
                       title: _recipeList[index].name,
                       cookTime: _recipeList[index].totalTime,
                       rating: _recipeList[index].rating.toString(),
                       thumbnailUrl: _recipeList[index].image);
-                },
-              ));
-  }
+                 }
+            )
+    );
+                
+}
 }
