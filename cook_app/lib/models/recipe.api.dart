@@ -18,7 +18,7 @@ class RecipeAAPI {
     Map data = jsonDecode(response.body);
     List _tempList = [];
     for (var i in data['feed']) {
-      _tempList.add(i['content']['details']);
+      _tempList.add(i['content']);
     }
 
     return Recipe.recipesFromSnapShot(_tempList);

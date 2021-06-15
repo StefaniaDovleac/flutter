@@ -3,17 +3,28 @@ class Recipe {
   final String image;
   final String totalTime;
   final double rating;
-  // final String[] prepartionSteps;
+  final List<String> prepartionSteps;
 
-  Recipe({this.name, this.image, this.totalTime, this.rating});
+  Recipe(
+      {this.name,
+      this.image,
+      this.totalTime,
+      this.rating,
+      this.prepartionSteps});
 
   factory Recipe.fromJson(dynamic json) {
+    // print(
+    //   json['preparationSteps'] as List<String>,
+    // );
+
+    var mockPrepSteps = ["Step1", 'Step2', 'Step3'];
     return Recipe(
-      name: json['name'] as String,
-      image: json['images'][0]['hostedLargeUrl'] as String,
-      totalTime: json['totalTime'] as String,
-      rating: json['rating'] as double,
-      // prepartionSteps: json['preparationSteps'] as double,
+      name: json['details']['name'] as String,
+      image: json['details']['images'][0]['hostedLargeUrl'] as String,
+      totalTime: json['details']['totalTime'] as String,
+      rating: json['details']['rating'] as double,
+      // prepartionSteps: json['preparationSteps'] as List<String>,
+      prepartionSteps: mockPrepSteps.toList()
     );
   }
 
@@ -29,11 +40,9 @@ class Recipe {
   }
 }
 
-class Ingredient{
-  String name; 
+class Ingredient {
+  String name;
   int quantity;
 
-  Ingredient({
-    this.name, this.quantity
-  });
+  Ingredient({this.name, this.quantity});
 }
