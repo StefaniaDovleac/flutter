@@ -1,26 +1,44 @@
-import 'package:cook_app/pages/shopping-list.dart';
-
 class ShoppingListItem {
-  int id;
-  String name;
-  int quantity;
-  ShoppingListItem({this.name, this.quantity});
-  ShoppingListItem.withId({this.id, this.name, this.quantity});
+  int _id;
+  String _name;
+  int _quantity;
 
-  Map<String, dynamic> toMap() {
-    final map = Map<String, dynamic>();
-    if (id != null) {
-      map['id'] = id;
+  ShoppingListItem(this._name, this._quantity);
+
+  ShoppingListItem.withId(this._id, this._name, this._quantity);
+
+  int get id => _id;
+
+  String get name => _name;
+
+  int get quantity => _quantity;
+
+  set name(String newName) {
+    if (newName.length <= 255) {
+      this._name = newName;
     }
-    map['name'] = name;
-    map['quantity'] = "quantity";
+  }
+
+  set quantity(int newQuantity) {
+    this._quantity = newQuantity;
+  }
+
+  // Convert a Note object into a Map object
+  Map<String, dynamic> toMap() {
+    var map = Map<String, dynamic>();
+    if (id != null) {
+      map['id'] = _id;
+    }
+    map['name'] = _name;
+    map['quantity'] = _quantity;
+
     return map;
   }
 
-  factory ShoppingListItem.fromMap(Map<String, dynamic> map) {
-    return ShoppingListItem.withId(
-        id: map['id'], name: map['name'], quantity: map['quantity']);
+  // Extract a Note object from a Map object
+  ShoppingListItem.fromMapObject(Map<String, dynamic> map) {
+    this._id = map['id'];
+    this._name = map['name'];
+    this._quantity = map['quantity'];
   }
-
-  
 }

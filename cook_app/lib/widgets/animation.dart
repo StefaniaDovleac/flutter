@@ -23,7 +23,6 @@ class PageAnimationState extends State<PageAnimation>
         duration: Duration(milliseconds: 800),
         vsync: this);
 
-
     animation = Tween<double>(begin: 100, end: 300).animate(controller)
       ..addListener(() {
         setState(() {});
@@ -50,6 +49,12 @@ class PageAnimationState extends State<PageAnimation>
                 MaterialPageRoute(
                   builder: (BuildContext context) => LoginPage(),
                 ));
+
+            final snackBar = SnackBar(
+              content: Text('Login snackbar'),
+            );
+
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
             _isRunning = false;
           } else {
             controller.repeat(min: 0.4);
@@ -57,22 +62,20 @@ class PageAnimationState extends State<PageAnimation>
           }
         },
         child: Center(
-            child:           
-
-                Container(
-                    width: animation.value,
-                    height: animation.value,
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.restaurant_menu_sharp,
-                          color: Colors.black,
-                          size: 30,
-                        ),
-                        SizedBox(width: 7),
-                        Text("Click me!"),
-                      ],
+            child: Container(
+                width: animation.value,
+                height: animation.value,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.restaurant_menu_sharp,
+                      color: Colors.black,
+                      size: 30,
                     ),
-                    color: Colors.green)));
+                    SizedBox(width: 7),
+                    Text("Click me!"),
+                  ],
+                ),
+                color: Colors.green)));
   }
 }
